@@ -14,8 +14,19 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		//Base condition to avoid null pointer
+		if(string.equals(null))
+			return null;
+		//handles empty string
+		if(string.equals(""))
+			return "";
+		//handles any combination of characters
+		String[] characters = string.split("");
+		String reversed = "";
+		for(int i = characters.length-1; i >= 0; i--) {
+			reversed = reversed + characters[i];
+		}
+		return reversed;
 	}
 
 	/**
