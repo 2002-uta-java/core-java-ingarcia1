@@ -57,7 +57,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 2
 	 ******************************************************************/
-	@Test
+	/*@Test
 	public void basic() {
 		final String phrase = "Portable Network Graphics";
 		final String expected = "PNG";
@@ -89,7 +89,7 @@ public class EvaluationServiceTest {
 	 * Question 3
 	 ******************************************************************/
 
-	/*@Test
+	@Test
 	public void trianglesWithNoEqualSidesAreNotEquilateral() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(5, 4, 6);
 		assertFalse(triangle.isEquilateral());

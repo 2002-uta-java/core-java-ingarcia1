@@ -14,7 +14,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String reverse(String string) {
-		//Base condition to avoid null pointer
+		//base condition to avoid null pointer
 		if(string.equals(null))
 			return null;
 		//handles empty string
@@ -24,7 +24,7 @@ public class EvaluationService {
 		String[] characters = string.split("");
 		String reversed = "";
 		for(int i = characters.length-1; i >= 0; i--) {
-			reversed = reversed + characters[i];
+			reversed += characters[i];
 		}
 		return reversed;
 	}
@@ -38,8 +38,25 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		//base condition to avoid null pointer
+		if(phrase.equals(null))
+			return null;
+		//handles empty string
+		if(phrase.equals(""))
+			return "";
+		//handles any combination of characters
+		String acronym = "";
+		boolean flag = true;
+		for(int i = 0; i < phrase.length(); i++) {
+			char current = phrase.charAt(i);
+			if(flag) {
+				acronym += Character.toUpperCase(current);
+				flag = !flag;
+			}
+			if(current == ' '||current == '-')
+				flag = !flag;
+		}
+		return acronym;
 	}
 
 	/**
@@ -92,17 +109,20 @@ public class EvaluationService {
 		}
 
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
+			if(sideOne == sideTwo && sideTwo == sideThree)
+				return true;
 			return false;
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
+			if(sideOne == sideTwo || sideTwo == sideThree || sideOne == sideThree)
+				return true;
 			return false;
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
+			if(sideOne != sideTwo && sideTwo != sideThree && sideOne != sideThree)
+				return true;
 			return false;
 		}
 
