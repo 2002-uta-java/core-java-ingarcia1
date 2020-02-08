@@ -200,9 +200,25 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String cleanPhoneNumber(String string) throws IllegalArgumentException{
+		char[] input = string.toCharArray();
+		String output = "";
+		for(int i = 0; i < input.length; i++) {
+			if(!Character.isDigit(input[i])) {
+				if(Character.isAlphabetic(input[i]) || (!(input[i] == ' ') && !(input[i] == '-') && !(input[i] == '.') 
+						&& !(input[i] == '+') && !(input[i] == '(') && !(input[i] == ')'))){
+					throw new IllegalArgumentException();
+				}
+				
+			}
+			else {
+				output += input[i];
+			}
+		}
+		if(output.length() > 11 || output.length() < 10) {
+			throw new IllegalArgumentException();
+		}
+		return output;
 	}
 
 	/**

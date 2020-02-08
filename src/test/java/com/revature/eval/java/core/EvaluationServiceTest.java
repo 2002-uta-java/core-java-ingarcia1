@@ -156,7 +156,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 5
 	 ******************************************************************/
-	@Test
+	/*@Test
 	public void cleansTheNumber() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("(223) 456-7890");
@@ -194,7 +194,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 6
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void countOneWord() {
 		Map<String, Integer> expectedWordCount = new HashMap<>();
 		expectedWordCount.put("word", 1);
