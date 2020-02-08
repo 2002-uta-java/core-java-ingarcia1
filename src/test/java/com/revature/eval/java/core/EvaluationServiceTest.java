@@ -89,7 +89,7 @@ public class EvaluationServiceTest {
 	 * Question 3
 	 ******************************************************************/
 
-	@Test
+	/*@Test
 	public void trianglesWithNoEqualSidesAreNotEquilateral() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(5, 4, 6);
 		assertFalse(triangle.isEquilateral());
@@ -156,7 +156,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 5
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void cleansTheNumber() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("(223) 456-7890");

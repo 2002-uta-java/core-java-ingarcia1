@@ -144,8 +144,29 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		char[][] values ={{'a','1'},{'b','3'},{'c','3'},{'d','2'},{'e','1'},{'f','4'},{'g','2'},{'h','4'},{'i','1'}
+		,{'j','8'},{'k','5'},{'l','1'},{'m','3'},{'n','1'},{'o','1'},{'p','3'},{'q','0'},{'r','1'},{'s','1'}
+		,{'t','1'},{'u','1'},{'v','4'},{'w','4'},{'x','8'},{'y','4'},{'z','0'}};
+		
+		int sum = 0;
+		
+		char[] characters = string.toCharArray();
+		for(int i = 0; i < characters.length; i++) {
+			for(int j = 0; j < values.length; j++) {
+				if(Character.toLowerCase(characters[i]) == values[j][0]){
+					if(values[j][1] == '0') {
+						sum += 10;
+					}
+					else {
+						String temp = values[j][1]+"";;
+						sum += Integer.parseInt(temp);
+					}
+				}
+			}
+		}
+		
+		return sum;
 	}
 
 	/**
