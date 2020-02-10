@@ -284,7 +284,6 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
 			return 0;
 		}
 
@@ -321,8 +320,33 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		char[] sentence = string.toCharArray();
+		String consonant = "";
+		String pigLatin = "";
+		for(int i = 0; i < sentence.length; i++) {
+//			//Edge case 'QU'
+//			if(sentence[i] == 'q' && sentence[i+1] == 'u') {
+//				consonant += "qu";
+//				i++;
+//				continue;
+//			}
+			if(sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i'|| sentence[i] == 'o' || sentence[i] == 'u') {
+				for(int j = i; j < sentence.length; j++) {
+					if(Character.isWhitespace(sentence[i + 1])) {
+						pigLatin += consonant + "ay ";
+						continue;
+					}
+					pigLatin += sentence[j];
+				}
+				pigLatin += consonant;
+				return pigLatin + "ay";
+			}
+			else {
+				consonant += sentence[i];
+			}
+			
+		}
+		return pigLatin;
 	}
 
 	/**
@@ -341,7 +365,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
+		String armstrong = input + "";
+		String[] nums = armstrong.split("");
+		int sum = 0;
+		for(int i = 0; i < nums.length; i++) {
+			sum += Math.pow(Double.parseDouble(nums[i]), nums.length);
+		}
+		if(sum == input)
+			return true;
 		return false;
 	}
 
@@ -356,7 +387,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
+		
 		return null;
 	}
 
