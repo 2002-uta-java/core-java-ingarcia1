@@ -252,7 +252,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 7
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void findsAValueInTheMiddleOfAnArray() {
 		List<String> sortedList = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8", "9", "11"));
 

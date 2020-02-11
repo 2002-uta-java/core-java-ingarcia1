@@ -657,7 +657,6 @@ public class EvaluationService {
 		for(int i = 0; i < 10; i++) {
 			if(isbn[i] >= 48 && isbn[i] <= 57) { 
 				sum += Character.getNumericValue(isbn[i]) * count;
-				System.out.println(sum);
 				count--;
 			}
 			else if(isbn[i] == 'X') {
@@ -687,8 +686,26 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+		boolean [] visited = new boolean[26];
+		if(string.equals(""))
+			return false;
+		
+		char[] words = string.toCharArray();
+		
+		for(int i = 0; i < words.length; i++) {
+			if(words[i] == ' ')
+				continue;
+			int index = words[i] - 'a';
+			
+			if(visited[index] == false)
+				visited[index] = true;	
+		}
+		for(int i = 0; i < visited.length; i++) {
+			if(visited[i] == false)
+				return false;
+		}
+		return true;
 	}
 
 	/**
