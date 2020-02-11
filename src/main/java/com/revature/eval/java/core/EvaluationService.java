@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -236,7 +237,7 @@ public class EvaluationService {
 		String[] wordArray = string.split("\\W+");
 		for(int i = 0; i < wordArray.length; i++) {
 			if(words.containsKey(wordArray[i])) {
-				words.replace(wordArray[i], (words.get(wordArray[i]) + 1));
+				words.put(wordArray[i], words.get(wordArray[i]) + 1);
 			}
 			else {
 				words.put(wordArray[i], 1);
@@ -320,31 +321,55 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		char[] sentence = string.toCharArray();
-		String consonant = "";
+		String[] words = string.split(" ");
 		String pigLatin = "";
-		for(int i = 0; i < sentence.length; i++) {
-//			//Edge case 'QU'
-//			if(sentence[i] == 'q' && sentence[i+1] == 'u') {
-//				consonant += "qu";
-//				i++;
-//				continue;
-//			}
-			if(sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i'|| sentence[i] == 'o' || sentence[i] == 'u') {
-				for(int j = i; j < sentence.length; j++) {
-					if(Character.isWhitespace(sentence[i + 1])) {
-						pigLatin += consonant + "ay ";
+		
+		if(words.length == 1) {
+			char[] sentence = string.toCharArray();
+			String consonant = "";
+			
+			for(int i = 0; i < sentence.length; i++) {
+				if(sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i'|| sentence[i] == 'o' || sentence[i] == 'u') {
+					for(int j = i; j < sentence.length; j++) {
+						pigLatin += sentence[j];
+					}
+					pigLatin += consonant;
+					return pigLatin + "ay";
+				}
+				else {
+					consonant += sentence[i];
+				}
+			}
+		}
+		else {
+			for(int k = 0; k < words.length; k++) {
+				char[] sentence = words[k].toCharArray();
+				String consonant = "";
+				
+				for(int i = 0; i < sentence.length; i++) {
+					if(sentence[i] == 'q' && sentence[i+1] == 'u') {
+						consonant += "qu";
+						i++;
 						continue;
 					}
-					pigLatin += sentence[j];
+					if(sentence[i] == 'a' || sentence[i] == 'e' || sentence[i] == 'i'|| sentence[i] == 'o' || sentence[i] == 'u') {
+						for(int j = i; j < sentence.length; j++) {
+							pigLatin += sentence[j];
+						}
+						pigLatin += consonant;
+						if(i + 2 == sentence.length) {
+							pigLatin += "ay";
+						}
+						else {
+							pigLatin += "ay ";
+						}
+							
+					}
+					else {
+						consonant += sentence[i];
+					}
 				}
-				pigLatin += consonant;
-				return pigLatin + "ay";
 			}
-			else {
-				consonant += sentence[i];
-			}
-			
 		}
 		return pigLatin;
 	}
@@ -387,8 +412,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		
-		return null;
+		List<Long> primeFactors = new ArrayList<>();
+		//Divide by two as much as we can
+		while(l % 2 == 0) {
+			primeFactors.add(2L);
+			l /= 2;
+		}
+        for (Long i = 3L; i <= (long)Math.sqrt(l); i+= 2) { 
+            while (l % i == 0) { 
+                primeFactors.add(i); 
+                l /= i; 
+            } 
+        } 
+        if (l > 2) 
+            primeFactors.add(l); 
+		return primeFactors;
 	}
 
 	/**
@@ -426,8 +464,41 @@ public class EvaluationService {
 		}
 
 		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			char[] letters = string.toCharArray();
+			String rotate = "";
+			for(char letter: letters) {
+				if(letter == ' ')
+					rotate += " ";
+				if(letter == '\'')
+					rotate += "'";
+				if(letter == '!')
+					rotate += "!";
+				if(letter == '.')
+					rotate += ".";
+				if(letter == ',')
+					rotate +=",";
+				if(letter >= 48 && letter <= 57)
+					rotate += letter;
+				if(letter >= 65 && letter <= 90) {
+					int l = letter;
+					l += this.key;
+					l-= 65;
+					l %= 26;
+					l += 65;
+					char temp = (char)l;
+					rotate += temp;
+				}
+				if(letter >= 97 && letter <= 122) {
+					int l = letter;
+					l += this.key;
+					l-= 97;
+					l %= 26;
+					l += 97;
+					char temp = (char)l;
+					rotate += temp;
+				}
+			}
+			return rotate;
 		}
 
 	}
@@ -445,8 +516,24 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		if(i == 0)
+			throw new IllegalArgumentException();
+		
+		int count=0;
+		int num = 1;
+		int j;
+	    while (count < i){ //At least i number of primes
+	      num += 1;
+	      for (j = 2; j <= num; j++){
+	        if (num % j == 0) { //Divide by all possible numbers
+	          break;
+	        }
+	      }
+	      if ( j == num){
+	        count = count+1;
+	      }
+	    }
+		return num;
 	}
 
 	/**
@@ -482,8 +569,32 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			
+			string = string.toLowerCase();
+			char[] words = string.toCharArray();
+			int counter = 0;
+			String encryption = "";
+			
+			for(int i = 0; i < words.length; i++) {
+				if(words[i] == ',' || words[i] == '.')
+					continue;
+				if(counter == 5) {
+					encryption += " ";
+					counter = 0;
+				}
+				if(words[i] >= 48 && words[i] <= 57) {
+					encryption += words[i];
+					counter++;
+				}
+				if(words[i] >= 97 && words[i] <= 122) {
+					int temp = words[i];
+					int value = (122 + 97) - temp;
+					char encoding = (char) value;
+					encryption += encoding;
+					counter++;
+				}
+			}
+			return encryption;
 		}
 
 		/**
@@ -493,8 +604,21 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			char[] words = string.toCharArray();
+			String decryption = "";
+			
+			for(int i = 0; i < words.length; i ++) {
+				if(words[i] >= 48 && words[i] <= 57) {
+					decryption += words[i];
+				}
+				if(words[i] >= 97 && words[i] <= 122) {
+					int temp = words[i];
+					int value = (122 + 97) - temp;
+					char encoding = (char) value;
+					decryption += encoding;
+				}
+			}
+			return decryption;
 		}
 	}
 

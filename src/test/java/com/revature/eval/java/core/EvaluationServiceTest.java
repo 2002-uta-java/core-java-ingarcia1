@@ -29,7 +29,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 1
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testAnEmptyString() {
 		assertEquals("", evaluationService.reverse(""));
 	}
@@ -57,7 +57,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 2
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void basic() {
 		final String phrase = "Portable Network Graphics";
 		final String expected = "PNG";
@@ -89,7 +89,7 @@ public class EvaluationServiceTest {
 	 * Question 3
 	 ******************************************************************/
 
-	/*@Test
+	@Test
 	public void trianglesWithNoEqualSidesAreNotEquilateral() {
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(5, 4, 6);
 		assertFalse(triangle.isEquilateral());
@@ -128,7 +128,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 4
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testAValuableLetter() {
 		assertEquals(4, evaluationService.getScrabbleScore("f"));
 	}
@@ -156,7 +156,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 5
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void cleansTheNumber() {
 		final String expectedNumber = "2234567890";
 		final String actualNumber = evaluationService.cleanPhoneNumber("(223) 456-7890");
@@ -194,7 +194,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 6
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void countOneWord() {
 		Map<String, Integer> expectedWordCount = new HashMap<>();
 		expectedWordCount.put("word", 1);
@@ -302,7 +302,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 8
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testWordBeginningWithA() {
 		assertEquals("appleay", evaluationService.toPigLatin("apple"));
 	}
@@ -330,7 +330,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 9
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void singleDigitsAreArmstrongNumbers() {
 		int input = 5;
 
@@ -398,7 +398,7 @@ public class EvaluationServiceTest {
 	 * Question 11
 	 ******************************************************************/
 
-	/*@Test
+	@Test
 	public void rotateSingleCharacterWithWrapAround() {
 		EvaluationService.RotationalCipher rotationalCipher = new EvaluationService.RotationalCipher(13);
 		assertEquals("a", rotationalCipher.rotate("n"));
@@ -432,7 +432,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 12
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testFirstPrime() {
 		assertThat(evaluationService.calculateNthPrime(1), is(2));
 	}
@@ -462,7 +462,7 @@ public class EvaluationServiceTest {
 	 * Question 13
 	 ******************************************************************/
 
-	/*@Test
+	@Test
 	public void testEncodeYes() {
 		assertEquals("bvh", EvaluationService.AtbashCipher.encode("yes"));
 	}
@@ -496,7 +496,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 14
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testDecodeExercism() {
 		assertEquals("exercism", EvaluationService.AtbashCipher.decode("vcvix rhn"));
 	}
