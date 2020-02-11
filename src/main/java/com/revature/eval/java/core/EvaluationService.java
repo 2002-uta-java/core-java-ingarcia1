@@ -2,7 +2,9 @@ package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -285,7 +287,7 @@ public class EvaluationService {
 		private List<T> sortedList;
 
 		public int indexOf(T t) {
-			return 0;
+			return Arrays.binarySearch(this.sortedList.toArray(), t);
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -711,13 +713,13 @@ public class EvaluationService {
 	/**
 	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
 	 * 
-	 * A gigasecond is 109 (1,000,000,000) seconds.
+	 * A gigasecond is 10^9 (1,000,000,000) seconds.
 	 * 
 	 * @param given
 	 * @return
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
+		
 		return null;
 	}
 
@@ -735,8 +737,21 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		HashSet<Integer> multiples = new HashSet<>();
+		int sum = 0;
+		
+		for (int j : set) {
+			int temp = j;
+			while (temp < i) {
+				multiples.add(temp);
+				temp += j;
+			}
+		}
+		
+		for (int multiple : multiples) {
+			sum += multiple;
+		}
+		return sum;
 	}
 
 	/**

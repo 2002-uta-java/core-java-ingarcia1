@@ -577,7 +577,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 17
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void modernTime() {
 		assertEquals(LocalDateTime.of(2043, Month.JANUARY, 1, 1, 46, 40),
 				evaluationService.getGigasecondDate(LocalDate.of(2011, Month.APRIL, 25)));
@@ -610,7 +610,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 18
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testSumOfMultiplesOf4and6UpToFifteen() {
 
 		int[] set = { 4, 6 };
@@ -658,7 +658,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 19
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testThatAValidCanadianSocialInsuranceNumberIsIdentifiedAsValidV1() {
 		assertTrue(evaluationService.isLuhnValid("046 454 286"));
 	}
@@ -686,7 +686,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 20
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void testSingleAddition1() {
 		assertEquals(2, evaluationService.solveWordProblem("What is 1 plus 1?"));
 	}
@@ -709,6 +709,6 @@ public class EvaluationServiceTest {
 	@Test
 	public void testSingleDivision() {
 		assertEquals(-11, evaluationService.solveWordProblem("What is 33 divided by -3?"));
-	}*/
+	}
 
 }
