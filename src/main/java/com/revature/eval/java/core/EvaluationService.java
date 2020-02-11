@@ -645,7 +645,31 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
+		
+		String temp = string.replace("-", "");
+		char[] isbn = temp.toCharArray();
+		int sum = 0;
+		int count = 10;
+		
+		if(isbn.length != 10)
+			return false;
+		
+		for(int i = 0; i < 10; i++) {
+			if(isbn[i] >= 48 && isbn[i] <= 57) { 
+				sum += Character.getNumericValue(isbn[i]) * count;
+				System.out.println(sum);
+				count--;
+			}
+			else if(isbn[i] == 'X') {
+				sum += 10;
+				count--;
+			}
+			else
+				return false;
+		}
+		if(sum % 11 == 0)
+			return true;
+		
 		return false;
 	}
 

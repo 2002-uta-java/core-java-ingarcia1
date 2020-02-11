@@ -521,7 +521,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 15
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void validIsbnNumber() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21508-8"));
 	}
@@ -530,7 +530,7 @@ public class EvaluationServiceTest {
 	public void invalidIsbnCheckDigit() {
 		assertFalse(evaluationService.isValidIsbn("3-598-21508-9"));
 	}
-
+	
 	@Test
 	public void validIsbnNumberWithCheckDigitOfTen() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21507-X"));
@@ -549,7 +549,7 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 16
 	 ******************************************************************/
-	/*@Test
+	@Test
 	public void emptySentenceIsNotPangram() {
 		assertFalse(evaluationService.isPangram(""));
 	}
